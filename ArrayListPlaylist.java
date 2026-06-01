@@ -3,18 +3,15 @@ import java.util.List;
 
 public class ArrayListPlaylist implements Playlist {
 
-    private ArrayList<Song> songs = new ArrayList<>();;
+    private ArrayList<Song> songs = new ArrayList<>();
 
     public ArrayListPlaylist() {
     }
 
     @Override
     public boolean addSong(Song song) {
-        for (Song s : songs) {
-            if (s.getTitle().equalsIgnoreCase(song.getTitle())) return false;
-        }
         songs.add(song);
-        return songs.add(song);
+        return true;
     }
 
    @Override

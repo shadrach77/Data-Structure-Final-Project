@@ -11,7 +11,8 @@ public class LinkedListPlaylist implements Playlist {
 
     @Override
     public boolean addSong(Song song) {
-        return songs.add(song);
+        songs.add(song);
+        return true;
     }
 
        @Override
