@@ -1,0 +1,71 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListPlaylist implements Playlist {
+
+    private ArrayList<Song> songs = new ArrayList<>();;
+
+    public ArrayListPlaylist() {
+    }
+
+    @Override
+    public boolean addSong(Song song) {
+        for (Song s : songs) {
+            if (s.getTitle().equalsIgnoreCase(song.getTitle())) return false;
+        }
+        songs.add(song);
+        return songs.add(song);
+    }
+
+   @Override
+    public boolean removeSong(String title) {
+        return songs.removeIf(s -> s.getTitle().equalsIgnoreCase(title));
+    }
+
+ @Override
+    public boolean reorderSong(String title, int newIndex) {
+
+        Song foundSong = null;
+
+        for (Song s : songs) {
+            if (s.getTitle().equalsIgnoreCase(title)) {
+                foundSong = s;
+                break;
+            }
+        }
+
+        if (foundSong == null) {
+            return false;
+        }
+
+        if (newIndex < 0 || newIndex >= songs.size()) {
+            return false;
+        }
+
+        songs.remove(foundSong);
+        songs.add(newIndex, foundSong);
+
+        return true;
+    }
+
+    @Override
+    public Song searchSong(String title) {
+
+        for (Song s : songs) {
+
+            if (s.getTitle().equalsIgnoreCase(title)) {
+                return s;
+            }
+        }
+
+        return null;
+    }
+
+   @Override
+    public List<Song> getAllSongs() { return new ArrayList<>(songs); }
+
+    @Override
+    public int getSize() {
+        return songs.size();
+    }
+}
