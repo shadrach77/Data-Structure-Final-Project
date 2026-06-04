@@ -7,6 +7,30 @@ public class Song {
     private LocalDate publishDate;
 
     public Song(String title, String artist, int durationSeconds, LocalDate publishDate) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException(
+                "Title cannot be empty."
+            );
+        }
+
+        if (artist == null || artist.isBlank()) {
+            throw new IllegalArgumentException(
+                "Artist cannot be empty."
+            );
+        }
+
+        if (durationSeconds <= 0) {
+            throw new IllegalArgumentException(
+                "Duration must be positive."
+            );
+        }
+
+        if (publishDate == null) {
+            throw new IllegalArgumentException(
+                "Publish date cannot be null."
+            );
+        }
+
         this.title = title;
         this.artist = artist;
         this.durationSeconds = durationSeconds;
